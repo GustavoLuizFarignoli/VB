@@ -1,0 +1,52 @@
+/* Estilo do cabeçalho principal */
+.Main-Header {
+  height: 100px; /* Aumente a altura se necessário para acomodar as imagens maiores */
+  width: 100%;
+  display: flex;
+  align-items: center; /* Alinha os itens verticalmente ao centro */
+  justify-content: space-between; /* Espaça os elementos uniformemente da esquerda para a direita */
+  background-color: aqua;
+  padding: 0 20px; /* Adiciona espaçamento interno à esquerda e à direita */
+  box-sizing: border-box;
+  overflow: hidden; /* Garante que o conteúdo não transborde */
+}
+
+/* Estilo do campo de busca */
+.Input-Products {
+  max-width: 600px;
+  width: 500px;
+  border-radius: 15px;
+  border: 1px solid azure;
+  padding: 5px 10px;
+  box-sizing: border-box;
+  display: block;
+  margin: 0 auto; /* Centraliza o campo de busca */
+}
+
+/* Estilo da imagem do logo */
+.Image-Logo {
+  width: 120px; /* Ajuste o tamanho conforme necessário */
+  height: 120px;
+  object-fit: cover;
+  display: block;
+  top: 0.01px; /* Assegura que a imagem será exibida como um bloco */
+}
+
+/* Estilo da imagem de perfil */
+.Image-Cirilo {
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  margin-right: 60px; /* Adiciona um pequeno espaço à direita */
+}
+
+/* Estilo da seção do perfil */
+.Profile-Section {
+  display: flex;
+  align-items: center; /* Centraliza a imagem de perfil e o texto verticalmente */
+}
+
+.NomeDoPerfil {
+  right: 100px;
+}

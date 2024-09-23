@@ -1,0 +1,125 @@
+/* Estilo para ocupar a página inteira */
+body,
+html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: Arial, sans-serif;
+  background-color: #f9f9f9;
+}
+
+.profile-container {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  height: 100vh; /* Ocupa a altura total da página */
+  margin: 0 auto;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 80%; /* Ajusta a largura do contêiner */
+  max-width: 1200px;
+  align-items: flex-start; /* Alinha os elementos no início */
+}
+
+.profile-details-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 50%;
+}
+
+.profile-image {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 15px;
+}
+
+.input-group {
+  width: 100%;
+  margin-bottom: 15px;
+  position: relative;
+}
+
+.input-group label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 16px;
+  padding-right: 40px;
+}
+
+.save-button,
+.delete-button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.save-button {
+  background-color: #28a745;
+  color: white;
+  margin-right: 10px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.delete-button {
+  background-color: #ff4d4d;
+  color: white;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.button-group {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+/* Seção de informações adicionais à direita */
+.profile-info-section {
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.info-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  margin-bottom: 15px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.info-item span {
+  font-size: 16px;
+}
+
+.notification {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #454745;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  display: none; /* Escondido por padrão */
+  z-index: 1000;
+}
