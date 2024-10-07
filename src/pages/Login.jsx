@@ -15,6 +15,9 @@ const Login = () => {
           <p>
             Não tem uma conta? <Link to="/Cadastro">Cadastre-se aqui</Link>
           </p>
+          <p>
+            <Link to="/ReedefinirSenha">Esqueci minha senha</Link>
+          </p>
         </form>
       </div>
     </>

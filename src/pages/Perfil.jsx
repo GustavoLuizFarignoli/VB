@@ -63,7 +63,7 @@ const Profile = () => {
               type="text"
               name="name"
               value={user.name}
-              onChange={handleInputChange} /* Agora é editável */
+              onChange={handleInputChange}
             />
           </div>
           <div className="input-group">
@@ -72,7 +72,7 @@ const Profile = () => {
               type="password"
               name="password"
               value={user.password}
-              onChange={handleInputChange} /* Agora é editável */
+              onChange={handleInputChange}
             />
           </div>
           <div className="button-group">
@@ -85,23 +85,21 @@ const Profile = () => {
           </div>
         </div>
 
-        {/* Seção de Informações Adicionais */}
         <div className="profile-info-section">
           <div className="info-item">
-            <span>Endereços:</span>
-            <Link to="/alterar-endereco">
-              <FaArrowRight />
+            <Link to="/Enderecos">
+              <span>Endereços</span>
             </Link>
+            <FaArrowRight />
           </div>
           <div className="info-item">
-            <span>Métodos de Pagamento</span>
             <Link to="/alterar-pagamento">
-              <FaArrowRight />
+              <span>Métodos de Pagamento</span>
             </Link>
+            <FaArrowRight />
           </div>
         </div>
 
-        {/* Notificação */}
         <div className="notification">{notification}</div>
       </div>
     </>
