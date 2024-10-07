@@ -27,10 +27,15 @@ const Header = () => {
             <Link to="/Login">
               <img src={ciriloImg} alt="Cirilo" className="Image-Cirilo" />
             </Link>
-            <span className="NomeDoPerfil">Celenio</span>
             <Link to="/Perfil">
               <span className="Perfil">Perfil</span>
             </Link>
+
+            <img
+              src="https://image.flaticon.com/icons/svg/833/833314.svg"
+              alt="Carrinho de compras"
+              class="shopping-cart-icon"
+            />
           </div>
         </div>
       </header>
