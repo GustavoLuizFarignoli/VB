@@ -26,7 +26,7 @@ const Cadastro = () => {
 
     console.log(usuario);
     try {
-      const response = await fetch('http://127.0.0.1:80/api/post/usuario', {
+      const response = await fetch('http://26.193.92.153:80/api/post/usuario', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -36,7 +36,9 @@ const Cadastro = () => {
 
       if (response.ok) {
         alert('Usuário cadastrado com sucesso!');
-        // Aqui você pode redirecionar o usuário ou limpar o formulário
+        // criar a session aqui
+        console.log(sessionStorage.getItem)
+        //window.location.replace("/Home");
       } else {
         alert('Erro ao cadastrar usuário.');
       }
