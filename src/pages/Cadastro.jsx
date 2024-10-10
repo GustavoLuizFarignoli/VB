@@ -17,31 +17,36 @@ const Cadastro = () => {
       return;
     }
 
-    const usuario = {
+    const USUARIO = {
       nome: nome,
       email: email,
       senha: senha
     };
 
+    const CONFIG_REQUEST = {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify(USUARIO),
+    }
 
-    console.log(usuario);
     try {
-      const response = await fetch('http://26.193.92.153:80/api/post/usuario', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(usuario),
+      const RESPONSE = await fetch('http://26.193.92.153:80/api/post/usuario', CONFIG_REQUEST).then(
+        (response) => {
+          if (response.ok) {
+            alert('Usuário cadastrado com sucesso!');
+            window.location.replace("/Home");
+            return response.json();
+          }
+          if (response.status == 400) {
+            alert('Email já cadastrado ou inputs inválidos');
+          } else {
+            alert("Erro desconhecido");
+          }
+          return "";
+        }
+      ).then((data) => {
+        console.table(data);
       });
-
-      if (response.ok) {
-        alert('Usuário cadastrado com sucesso!');
-        // criar a session aqui
-        console.log(sessionStorage.getItem)
-        //window.location.replace("/Home");
-      } else {
-        alert('Erro ao cadastrar usuário.');
-      }
     } catch (error) {
       console.error('Erro na requisição:', error);
       alert('Erro na conexão com o servidor.');
