@@ -11,7 +11,6 @@ const Login = () => {
     event.preventDefault(); // Impede o comportamento padrão de recarregar a página
     
     const USUARIO = {
-      nome: nome,
       email: email,
       senha: senha
     };
@@ -27,18 +26,22 @@ const Login = () => {
         (response) => {
           if (response.ok) {
             alert('Login realizado com sucesso com sucesso!');
-            window.location.replace("/Home");
+            //window.location.replace("/Home");
             return response.json();
           }
-          if (response.status == 400) {
-            alert('Email já cadastrado ou inputs inválidos');
-          } else {
+          if (response.status == 401) {
+            alert('Senha Incorreta');
+          } else if (response.status == 404) {
+            alert('E-mail não cadastrado, Gostaria de Fazer seu Cadastro ?');
+          } 
+          else {
             alert("Erro desconhecido");
           }
           return "";
         }
       ).then((data) => {
         console.table(data);
+        localStorage.setItem('LoginToken', data);
       });
     } catch (error) {
       console.error('Erro na requisição:', error);

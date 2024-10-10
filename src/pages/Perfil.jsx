@@ -5,6 +5,23 @@ import { FaArrowRight } from "react-icons/fa";
 import Header from "../componets/Header";
 
 const Profile = () => {
+
+  const isAuthenticated = () => {
+    const token = localStorage.getItem('LoginToken');
+    if (!token) {
+      return false;
+    }
+      try {
+        const decodedToken = jwt_decode(token);
+        const currentTime = Date.now() / 1000; // em segundos
+        return decodedToken.exp > currentTime;
+    } catch (error) {
+        console.error('Invalid token:', error);
+        return false;
+    }
+
+  };
+
   const [user, setUser] = useState({
     name: "Cirilo23",
     password: "********",
@@ -81,6 +98,9 @@ const Profile = () => {
             </button>
             <button className="delete-button" onClick={handleDelete}>
               Excluir a conta
+            </button>
+            <button className="delete-button" onClick={isAuthenticated}>
+              Teste Token
             </button>
           </div>
         </div>
