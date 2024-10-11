@@ -22,7 +22,7 @@ const Login = () => {
     }
 
     try {
-      const RESPONSE = await fetch('http://26.193.92.153:80/api/login', CONFIG_REQUEST).then(
+      const RESPONSE = await fetch('http://localhost:80/api/login', CONFIG_REQUEST).then(
         (response) => {
           if (response.ok) {
             alert('Login realizado com sucesso com sucesso!');

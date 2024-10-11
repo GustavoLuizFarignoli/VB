@@ -32,9 +32,9 @@ const Header = () => {
             </Link>
 
             <img
-              src="https://image.flaticon.com/icons/svg/833/833314.svg"
+              src="src\assets\shopping-basket.svg.svg"
               alt="Carrinho de compras"
-              class="shopping-cart-icon"
+              className="shopping-cart-icon"
             />
           </div>
         </div>
