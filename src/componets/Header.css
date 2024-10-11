@@ -32,6 +32,10 @@
   top: 0.01px; /* Assegura que a imagem será exibida como um bloco */
 }
 
+.logo-link {
+  text-decoration: none;
+}
+
 .logo-text {
   color: #FFFFFF;
   font-weight: bold;

@@ -10,6 +10,7 @@ import Home from "./pages/Home.jsx";
 import Login from "./pages/Login.jsx";
 import Cadastro from "./pages/Cadastro.jsx";
 import Perfil from "./pages/Perfil.jsx";
+import Endereco from "./pages/Enderecos.jsx";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           <Route path="/home" element={<Home />} />
           <Route path="/cadastro" element={<Cadastro />} />
           <Route path="/perfil" element={<Perfil />} />
+          <Route path="/enderecos" element={<Endereco />} />
         </Routes>
       </BrowserRouter>
   );

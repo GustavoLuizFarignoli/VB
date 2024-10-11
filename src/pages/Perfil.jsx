@@ -1,27 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../styles/Perfil.css";
 import { Link } from "react-router-dom";
 import { FaArrowRight } from "react-icons/fa";
 import Header from "../componets/Header";
+import { jwtDecode } from "jwt-decode";
+import FetchHandler from '../services/api/FetchHandler'
 
 const Profile = () => {
-
-  const isAuthenticated = () => {
-    const token = localStorage.getItem('LoginToken');
-    if (!token) {
-      return false;
-    }
-      try {
-        const decodedToken = jwt_decode(token);
-        const currentTime = Date.now() / 1000; // em segundos
-        return decodedToken.exp > currentTime;
-    } catch (error) {
-        console.error('Invalid token:', error);
-        return false;
-    }
-
-  };
-
   const [user, setUser] = useState({
     name: "Cirilo23",
     password: "********",
@@ -30,6 +15,24 @@ const Profile = () => {
     paymentMethod: "Cartão de Crédito - Visa **** 1234",
   });
 
+  function isAuthenticated() {
+    const token = localStorage.getItem('LoginToken');
+    if (token === 'undefined' || token === null) {
+      console.log("Token Não Existe");
+      alert("Você precisa estar logado para acessar o perfil");
+      window.location.href = '/Login';
+      return false;
+    } else {
+      console.log("Logado");
+      const decodedToken = jwtDecode(token);
+      user.email = decodedToken['email'];
+      user.name = decodedToken['nome'];
+      return true
+    }
+  };
+
+  isAuthenticated();
+  
   const [notification, setNotification] = useState("");
 
   // Função para exibir a notificação por alguns segundos
@@ -49,8 +52,28 @@ const Profile = () => {
   };
 
   // Função para salvar as alterações
-  const handleSave = () => {
-    showNotification("Perfil salvo com sucesso!");
+  const handleSave = async () => {
+    const USUARIO = {
+      nome: user.name,
+      email: user.email
+    };
+
+    try {
+      const FETCH_HANDLER = new FetchHandler();
+      const RESPONSE = await FETCH_HANDLER.makeRequest('http://26.193.92.153:80/api/put/usuario', 'PUT', USUARIO);
+      const VAZIO = "";
+
+      if (RESPONSE != VAZIO) {
+        console.table(RESPONSE);
+        showNotification("Perfil salvo com sucesso!");
+      } else {
+        alert("Erro ao criar token!");
+      }
+
+    } catch (error) {
+      console.error('Erro na requisição:', error);
+      alert('Erro na conexão com o servidor.');
+    }
   };
 
   // Função para deletar o perfil
@@ -80,15 +103,6 @@ const Profile = () => {
               type="text"
               name="name"
               value={user.name}
-              onChange={handleInputChange}
-            />
-          </div>
-          <div className="input-group">
-            <label>Senha</label>
-            <input
-              type="password"
-              name="password"
-              value={user.password}
               onChange={handleInputChange}
             />
           </div>

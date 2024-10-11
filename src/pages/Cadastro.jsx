@@ -23,19 +23,19 @@ const Cadastro = () => {
       email: email,
       senha: senha
     };
-    
-    
 
     try {
       const FETCH_HANDLER = new FetchHandler();
-      const RESPONSE = await FETCH_HANDLER.makeRequest('http://localhost:80/api/post/usuario', 'POST', USUARIO);
+      const RESPONSE = await FETCH_HANDLER.makeRequest('http://26.193.92.153:80/api/post/usuario', 'POST', USUARIO);
       const VAZIO = "";
 
       if (RESPONSE != VAZIO) {
         console.table(RESPONSE);
+        localStorage.setItem('LoginToken', RESPONSE);
       } else {
         alert("Erro ao criar token!");
       }
+
     } catch (error) {
       console.error('Erro na requisição:', error);
       alert('Erro na conexão com o servidor.');
