@@ -1,4 +1,4 @@
-import "./Home.css";
+import "../styles/Home.css";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Route, Routes, BrowserRouter, Navigate } from "react-router-dom";
 import futebol from "../image/futebol.jpeg";

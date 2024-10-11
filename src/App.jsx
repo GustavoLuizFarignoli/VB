@@ -1,4 +1,4 @@
-import "./App.css";
+import "./styles/App.css";
 import { Route, Routes, BrowserRouter, Navigate } from "react-router-dom";
 
 import "swiper/css";
@@ -13,17 +13,16 @@ import Perfil from "./pages/Perfil.jsx";
 
 function App() {
   return (
-    <>
       <BrowserRouter>
         <Navbar />
         <Routes>
-          <Route path="/Login" element={<Login />} />
-          <Route path="/Home" element={<Home />} />
-          <Route path="/Cadastro" element={<Cadastro />} />
-          <Route path="/Perfil" element={<Perfil />} />
+          <Route path="/" element={<Navigate to="/home" />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/home" element={<Home />} />
+          <Route path="/cadastro" element={<Cadastro />} />
+          <Route path="/perfil" element={<Perfil />} />
         </Routes>
       </BrowserRouter>
-    </>
   );
 }
 

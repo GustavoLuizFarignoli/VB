@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./ReedefinirSenha.css";
+import "../styles/ReedefinirSenha.css";
 import Header from "../componets/Header";
 import { Link } from "react-router-dom";
 

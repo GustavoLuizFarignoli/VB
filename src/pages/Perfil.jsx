@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./Perfil.css";
+import "../styles/Perfil.css";
 import { Link } from "react-router-dom";
 import { FaArrowRight } from "react-icons/fa";
 import Header from "../componets/Header";

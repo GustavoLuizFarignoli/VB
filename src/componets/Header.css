@@ -5,7 +5,7 @@
   display: flex;
   align-items: center; /* Alinha os itens verticalmente ao centro */
   justify-content: space-between; /* Espaça os elementos uniformemente da esquerda para a direita */
-  background-color: aqua;
+  background-color: #0EB1D2;
   padding: 0 20px; /* Adiciona espaçamento interno à esquerda e à direita */
   box-sizing: border-box;
   overflow: hidden; /* Garante que o conteúdo não transborde */
@@ -30,6 +30,13 @@
   object-fit: cover;
   display: block;
   top: 0.01px; /* Assegura que a imagem será exibida como um bloco */
+}
+
+.logo-text {
+  color: #FFFFFF;
+  font-weight: bold;
+  font-size: clamp(1rem, 2.5vw, 4rem);
+  text-decoration: none;
 }
 
 /* Estilo da imagem de perfil */

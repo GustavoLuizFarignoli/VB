@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./Enderecos.css";
+import "../styles/Enderecos.css";
 import Header from "../componets/Header";
 
 const CadastroEndereco = () => {
@@ -22,7 +22,6 @@ const CadastroEndereco = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Aqui você pode fazer o envio dos dados API
     console.log("Dados do endereço:", formData);
   };
 
