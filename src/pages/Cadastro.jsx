@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/Cadastro.css';
 import Header from '../componets/Header';
+import FetchHandler from '../services/api/FetchHandler'
 
 const Cadastro = () => {
   const [nome, setNome] = useState('');
@@ -22,31 +23,19 @@ const Cadastro = () => {
       email: email,
       senha: senha
     };
-
-    const CONFIG_REQUEST = {
-      method: 'POST',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify(USUARIO),
-    }
+    
+    
 
     try {
-      const RESPONSE = await fetch('http://localhost:80/api/post/usuario', CONFIG_REQUEST).then(
-        (response) => {
-          if (response.ok) {
-            alert('Usuário cadastrado com sucesso!');
-            window.location.replace("/Home");
-            return response.json();
-          }
-          if (response.status == 400) {
-            alert('Email já cadastrado ou inputs inválidos');
-          } else {
-            alert("Erro desconhecido");
-          }
-          return "";
-        }
-      ).then((data) => {
-        console.table(data);
-      });
+      const FETCH_HANDLER = new FetchHandler();
+      const RESPONSE = await FETCH_HANDLER.makeRequest('http://localhost:80/api/post/usuario', 'POST', USUARIO);
+      const VAZIO = "";
+
+      if (RESPONSE != VAZIO) {
+        console.table(RESPONSE);
+      } else {
+        alert("Erro ao criar token!");
+      }
     } catch (error) {
       console.error('Erro na requisição:', error);
       alert('Erro na conexão com o servidor.');
