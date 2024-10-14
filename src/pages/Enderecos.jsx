@@ -1,8 +1,15 @@
 import React, { useState } from "react";
 import "../styles/Enderecos.css";
 import Header from "../componets/Header";
+import { jwtDecode } from "jwt-decode";
+import FetchHandler from '../services/api/FetchHandler'
 
 const CadastroEndereco = () => {
+  const [user, setUser] = useState({
+    name: "",
+    email: ""
+  });
+
   const [formData, setFormData] = useState({
     rua: "",
     numero: "",
@@ -12,6 +19,25 @@ const CadastroEndereco = () => {
     complemento: "",
   });
 
+  const [notification, setNotification] = useState("");
+
+  function isAuthenticated() {
+    const token = localStorage.getItem('LoginToken');
+    if (token === 'undefined' || token === null) {
+      console.log("Token Não Existe");
+      alert("Você precisa estar logado para acessar o cadasto de endereços");
+      window.location.href = '/Login';
+      return false;
+    } else {
+      const decodedToken = jwtDecode(token);
+      user.email = decodedToken['email'];
+      user.name = decodedToken['nome'];
+      return true
+    }
+  };
+
+  isAuthenticated();
+  
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevState) => ({
@@ -20,9 +46,36 @@ const CadastroEndereco = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Dados do endereço:", formData);
+    //console.log("Dados do endereço:", formData);
+
+    const ENDERECO = {
+      rua: formData.rua,
+      numero: formData.numero,
+      cidade: formData.cidade,
+      estado: formData.estado,
+      cep: formData.cep,
+      //complemento: formData.complemento,
+    };
+
+    try {
+      const FETCH_HANDLER = new FetchHandler();
+      const RESPONSE = await FETCH_HANDLER.makeRequest('http://26.193.92.153:80/api/post/endereco', 'POST', ENDERECO);
+      const VAZIO = "";
+
+      if (RESPONSE != VAZIO) {
+        console.table(RESPONSE);
+        alert("Endereço salvo com sucesso!");
+      } else {
+        alert("Erro ao salvar o endereço!");
+      }
+
+    } catch (error) {
+      console.error('Erro na requisição:', error);
+      alert('Erro na conexão com o servidor.');
+    }
+
   };
 
   return (

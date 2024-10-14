@@ -67,7 +67,7 @@ const Profile = () => {
         console.table(RESPONSE);
         showNotification("Perfil salvo com sucesso!");
       } else {
-        alert("Erro ao criar token!");
+        alert("Erro ao salvar alterações");
       }
 
     } catch (error) {
@@ -77,12 +77,26 @@ const Profile = () => {
   };
 
   // Função para deletar o perfil
-  const handleDelete = () => {
-    const confirmDelete = window.confirm(
-      "Tem certeza que deseja excluir sua conta?"
-    );
-    if (confirmDelete) {
-      showNotification("Conta excluída com sucesso!");
+  const handleDelete = async () => {
+    const USUARIO = {
+      nome: user.name,
+      email: user.email
+    };
+    try {
+      const FETCH_HANDLER = new FetchHandler();
+      const RESPONSE = await FETCH_HANDLER.makeRequest('http://26.193.92.153:80/api/delete/usuario', 'DELETE', USUARIO);
+      const VAZIO = "";
+
+      console.log("Resposta:" . RESPONSE)
+
+      if (RESPONSE != VAZIO) {
+        console.table(RESPONSE);
+        showNotification("Conta excluída com sucesso!");
+        localStorage.removeItem('LoginToken');
+      } 
+    } catch (error) {
+      console.error('Erro na requisição:', error);
+      alert('Erro na conexão com o servidor.');
     }
   };
 
