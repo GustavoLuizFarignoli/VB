@@ -32,6 +32,8 @@ const Cadastro = () => {
       if (RESPONSE != VAZIO) {
         console.table(RESPONSE);
         localStorage.setItem('LoginToken', RESPONSE);
+        alert("Usuário Cadastrado com sucesso")
+        window.location.replace("/Home");
       } else {
         alert("Erro ao criar token!");
       }

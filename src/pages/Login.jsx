@@ -26,7 +26,7 @@ const Login = () => {
         (response) => {
           if (response.ok) {
             alert('Login realizado com sucesso com sucesso!');
-            //window.location.replace("/Home");
+            window.location.replace("/Home")
             return response.json();
           }
           if (response.status == 401) {

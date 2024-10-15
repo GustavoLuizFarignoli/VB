@@ -24,6 +24,7 @@ const Profile = () => {
       return false;
     } else {
       console.log("Logado");
+      console.log(token);
       const decodedToken = jwtDecode(token);
       user.email = decodedToken['email'];
       user.name = decodedToken['nome'];

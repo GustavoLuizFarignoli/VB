@@ -12,6 +12,7 @@ import Cadastro from "./pages/Cadastro.jsx";
 import Perfil from "./pages/Perfil.jsx";
 import Endereco from "./pages/Enderecos.jsx";
 import ReedefinirSenha from "./pages/ReedefinirSenha.jsx";
+import Produtos from "./pages/Produtos.jsx";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
           <Route path="/perfil" element={<Perfil />} />
           <Route path="/enderecos" element={<Endereco />} />
           <Route path="/redefinir" element={<ReedefinirSenha />} />
+          <Route path="/produtos" element={<Produtos />} />
         </Routes>
       </BrowserRouter>
   );
