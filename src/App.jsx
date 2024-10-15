@@ -11,6 +11,7 @@ import Login from "./pages/Login.jsx";
 import Cadastro from "./pages/Cadastro.jsx";
 import Perfil from "./pages/Perfil.jsx";
 import Endereco from "./pages/Enderecos.jsx";
+import ReedefinirSenha from "./pages/ReedefinirSenha.jsx";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
           <Route path="/cadastro" element={<Cadastro />} />
           <Route path="/perfil" element={<Perfil />} />
           <Route path="/enderecos" element={<Endereco />} />
+          <Route path="/redefinir" element={<ReedefinirSenha />} />
         </Routes>
       </BrowserRouter>
   );

@@ -56,7 +56,8 @@ const CadastroEndereco = () => {
       cidade: formData.cidade,
       estado: formData.estado,
       cep: formData.cep,
-      //complemento: formData.complemento,
+      pais: formData.pais,
+      complemento: formData.complemento,
     };
 
     try {
@@ -64,6 +65,7 @@ const CadastroEndereco = () => {
       const RESPONSE = await FETCH_HANDLER.makeRequest('http://26.193.92.153:80/api/post/endereco', 'POST', ENDERECO);
       const VAZIO = "";
 
+      //Esse If não está funcionando, mesmo dando erro no back ele da alert endereço salvo com sucesso 
       if (RESPONSE != VAZIO) {
         console.table(RESPONSE);
         alert("Endereço salvo com sucesso!");
@@ -136,6 +138,17 @@ const CadastroEndereco = () => {
                 id="cep"
                 name="cep"
                 value={formData.cep}
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <div className="form-group">
+              <label htmlFor="pais">Pais:</label>
+              <input
+                type="text"
+                id="pais"
+                name="pais"
+                value={formData.pais}
                 onChange={handleChange}
                 required
               />

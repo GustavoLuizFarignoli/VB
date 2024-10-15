@@ -63,6 +63,7 @@ const Profile = () => {
       const RESPONSE = await FETCH_HANDLER.makeRequest('http://26.193.92.153:80/api/put/usuario', 'PUT', USUARIO);
       const VAZIO = "";
 
+      //Esse If não está funcionando, mesmo dando erro no back ele da alert endereço salvo com sucesso 
       if (RESPONSE != VAZIO) {
         console.table(RESPONSE);
         showNotification("Perfil salvo com sucesso!");
