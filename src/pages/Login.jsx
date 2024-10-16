@@ -41,7 +41,7 @@ const Login = () => {
         }
       ).then((data) => {
         console.table(data);
-        localStorage.setItem('LoginToken', data);
+        localStorage.setItem('LoginToken', data.token);
       });
     } catch (error) {
       console.error('Erro na requisição:', error);

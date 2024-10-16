@@ -16,11 +16,12 @@ const Profile = () => {
 
   function isAuthenticated() {
     const token = localStorage.getItem('LoginToken');
+    console.log(token)
 
     if (token === 'undefined' || token === null) {
       console.log("Token Não Existe");
       alert("Você precisa estar logado para acessar o perfil");
-      window.location.href = '/Login';
+      //window.location.href = '/Login';
       return false;
     } else {
       console.log("Logado");
@@ -72,6 +73,7 @@ const Profile = () => {
       //Esse If não está funcionando, mesmo dando erro no back ele da alert endereço salvo com sucesso 
       if (RESPONSE.status) {
         console.table(RESPONSE);
+        localStorage.setItem('LoginToken', RESPONSE.token);
         showNotification("Perfil salvo com sucesso!");
       } else {
         alert(`Erro ao salvar alterações: ${RESPONSE.message}`);

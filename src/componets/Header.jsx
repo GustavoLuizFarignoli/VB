@@ -24,10 +24,10 @@ const Header = () => {
             />
           </div>
           <div>
-            <Link to="/Login">
+            <Link to="/perfil">
               <img src={ciriloImg} alt="Cirilo" className="Image-Cirilo" />
             </Link>
-            <Link to="/Perfil">
+            <Link to="/perfil">
               <span className="Perfil">Perfil</span>
             </Link>
 
