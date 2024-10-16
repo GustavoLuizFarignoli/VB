@@ -8,8 +8,7 @@ import FetchHandler from '../services/api/FetchHandler'
 
 const Profile = () => {
   const [user, setUser] = useState({
-    name: "Cirilo23",
-    password: "********",
+    name: "",
     profileImage: "https://via.placeholder.com/150",
     address: "Rua Exemplo, 123, Cidade",
     paymentMethod: "Cartão de Crédito - Visa **** 1234",
@@ -17,6 +16,7 @@ const Profile = () => {
 
   function isAuthenticated() {
     const token = localStorage.getItem('LoginToken');
+
     if (token === 'undefined' || token === null) {
       console.log("Token Não Existe");
       alert("Você precisa estar logado para acessar o perfil");
@@ -24,15 +24,20 @@ const Profile = () => {
       return false;
     } else {
       console.log("Logado");
-      console.log(token);
       const decodedToken = jwtDecode(token);
-      user.email = decodedToken['email'];
-      user.name = decodedToken['nome'];
+      setUser(prevUser => ({
+        ...prevUser,
+        email: decodedToken['email'],
+        name: decodedToken['nome']
+      }));
+      
       return true
     }
   };
 
-  isAuthenticated();
+  useEffect(() => {
+    isAuthenticated();
+  }, []);
   
   const [notification, setNotification] = useState("");
 
@@ -65,11 +70,11 @@ const Profile = () => {
       const VAZIO = "";
 
       //Esse If não está funcionando, mesmo dando erro no back ele da alert endereço salvo com sucesso 
-      if (RESPONSE != VAZIO) {
+      if (RESPONSE.status) {
         console.table(RESPONSE);
         showNotification("Perfil salvo com sucesso!");
       } else {
-        alert("Erro ao salvar alterações");
+        alert(`Erro ao salvar alterações: ${RESPONSE.message}`);
       }
 
     } catch (error) {
@@ -91,11 +96,13 @@ const Profile = () => {
 
       console.log("Resposta:" . RESPONSE)
 
-      if (RESPONSE != VAZIO) {
+      if (RESPONSE.status) {
         console.table(RESPONSE);
         showNotification("Conta excluída com sucesso!");
         localStorage.removeItem('LoginToken');
-      } 
+      } else {
+        alert(`Erro ao excluir conta: ${RESPONSE.message}`);
+      }
     } catch (error) {
       console.error('Erro na requisição:', error);
       alert('Erro na conexão com o servidor.');

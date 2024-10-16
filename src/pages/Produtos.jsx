@@ -8,7 +8,8 @@ const CadastroProduto = () => {
   const [user, setUser] = useState({
     name: "",
     email: "",
-    tipo: ""
+    tipo: "",
+    id: ""
   });
 
   const [formData, setFormData] = useState({
@@ -31,6 +32,7 @@ const CadastroProduto = () => {
       user.email = decodedToken['email'];
       user.name = decodedToken['nome'];
       user.tipo = decodedToken['tipo'];
+      user.id = decodedToken['id'];
       if (user.tipo != 2){
         console.log("401 -Usuário não é Vendedor");
         alert("401 - acesso não autorizado");
@@ -56,7 +58,8 @@ const CadastroProduto = () => {
     const PRODUTO = {
       nome: formData.nome,
       descricao: formData.descricao,
-      preco: formData.preco
+      preco: formData.preco,
+      id_usuario: user.id
     };
 
     try {
@@ -64,12 +67,10 @@ const CadastroProduto = () => {
       const RESPONSE = await FETCH_HANDLER.makeRequest('http://26.193.92.153:80/api/post/produto', 'POST', PRODUTO);
       const VAZIO = "";
 
-      //Esse If não está funcionando, mesmo dando erro no back ele da alert endereço salvo com sucesso 
-      if (RESPONSE != VAZIO) {
-        console.table(RESPONSE);
+      if (RESPONSE.status) {
         alert("Produto salvo com sucesso!");
       } else {
-        alert("Erro ao salvar o produto!");
+        alert(`Erro ao salvar o produto: ${RESPONSE.message}`);
       }
 
     } catch (error) {

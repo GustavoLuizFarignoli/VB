@@ -26,10 +26,16 @@ class FetchHandler {
         const response = await fetch(url, OPTIONS);
 
         if (response.ok) {
-            return response.json();
+            //console.table(response);
+            return await response.json();  // Retorna o JSON da resposta
+        } else {
+            // Lança uma exceção para ser capturada no catch
+            const errorText = await response.text();
+            throw new Error(`Erro: ${response.status} - ${errorText}`);
         }
-        
-        alert(await response.text());
+    } catch (error) {
+        // Lança o erro para ser tratado no front-end
+        throw new Error(`Erro na requisição: ${error.message}`);
     }
 }
 

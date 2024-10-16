@@ -65,12 +65,10 @@ const CadastroEndereco = () => {
       const RESPONSE = await FETCH_HANDLER.makeRequest('http://26.193.92.153:80/api/post/endereco', 'POST', ENDERECO);
       const VAZIO = "";
 
-      //Esse If não está funcionando, mesmo dando erro no back ele da alert endereço salvo com sucesso 
-      if (RESPONSE != VAZIO) {
-        console.table(RESPONSE);
+      if (RESPONSE.status) {
         alert("Endereço salvo com sucesso!");
       } else {
-        alert("Erro ao salvar o endereço!");
+        alert(`Erro ao salvar o endereço: ${RESPONSE.message}`);
       }
 
     } catch (error) {

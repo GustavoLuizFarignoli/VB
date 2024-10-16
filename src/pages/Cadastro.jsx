@@ -29,13 +29,13 @@ const Cadastro = () => {
       const RESPONSE = await FETCH_HANDLER.makeRequest('http://26.193.92.153:80/api/post/usuario', 'POST', USUARIO);
       const VAZIO = "";
 
-      if (RESPONSE != VAZIO) {
+      if (RESPONSE.status) {
         console.table(RESPONSE);
         localStorage.setItem('LoginToken', RESPONSE);
         alert("Usuário Cadastrado com sucesso")
         window.location.replace("/Home");
       } else {
-        alert("Erro ao criar token!");
+        alert(`Erro ao cadastrar usuario: ${RESPONSE.message}`);
       }
 
     } catch (error) {
