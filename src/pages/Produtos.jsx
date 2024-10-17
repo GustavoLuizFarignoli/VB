@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../styles/Enderecos.css";
 import Header from "../componets/Header";
 import { jwtDecode } from "jwt-decode";
@@ -28,6 +28,7 @@ const CadastroProduto = () => {
       window.location.href = '/Login';
       return false;
     } else {
+      console.log("logado")
       const decodedToken = jwtDecode(token);
       user.email = decodedToken['email'];
       user.name = decodedToken['nome'];
@@ -41,7 +42,9 @@ const CadastroProduto = () => {
     }
   };
 
-  isAuthenticated();
+  useEffect(() => {
+    isAuthenticated();
+  }, []);
   
   const handleChange = (e) => {
     const { name, value } = e.target;
