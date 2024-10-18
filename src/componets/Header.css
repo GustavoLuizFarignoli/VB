@@ -1,68 +1,104 @@
 /* Estilo do cabeçalho principal */
 .Main-Header {
-  height: 100px; /* Aumente a altura se necessário para acomodar as imagens maiores */
+  height: 100px;
   width: 100%;
   display: flex;
-  align-items: center; /* Alinha os itens verticalmente ao centro */
-  justify-content: space-between; /* Espaça os elementos uniformemente da esquerda para a direita */
-  background-color: #0EB1D2;
-  padding: 0 20px; /* Adiciona espaçamento interno à esquerda e à direita */
+  align-items: center;
+  justify-content: space-between;
+  background-color: #0eb1d2;
+  padding: 0 30px;
   box-sizing: border-box;
-  overflow: hidden; /* Garante que o conteúdo não transborde */
+  position: relative;
+  z-index: 10;
 }
 
-/* Estilo do campo de busca */
-.Input-Products {
-  max-width: 600px;
-  width: 500px;
-  border-radius: 15px;
-  border: 1px solid azure;
-  padding: 5px 10px;
-  box-sizing: border-box;
-  display: block;
-  margin: 0 auto; /* Centraliza o campo de busca */
-}
-
-/* Estilo da imagem do logo */
-.Image-Logo {
-  width: 120px; /* Ajuste o tamanho conforme necessário */
-  height: 120px;
-  object-fit: cover;
-  display: block;
-  top: 0.01px; /* Assegura que a imagem será exibida como um bloco */
+.Logo {
+  display: flex;
+  align-items: center;
 }
 
 .logo-link {
+  display: flex;
+  align-items: center;
   text-decoration: none;
 }
 
 .logo-text {
-  color: #FFFFFF;
+  color: #ffffff;
   font-weight: bold;
-  font-size: clamp(1rem, 2.5vw, 4rem);
+  font-size: 2rem;
+  margin-left: 10px;
+}
+
+.Input-Products {
+  max-width: 600px;
+  width: 100%;
+  border-radius: 20px;
+  border: 1px solid #ffffff;
+  padding: 10px 20px;
+  box-sizing: border-box;
+  margin: 0 30px;
+  font-size: 16px;
+  color: #333;
+  background-color: #fff;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.Input-Products:focus {
+  border-color: #0056b3;
+}
+
+.Image-Cirilo {
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  margin-right: 10px;
+}
+
+.Profile-Section {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.Perfil {
+  color: white;
+  font-weight: bold;
+  font-size: 1rem;
   text-decoration: none;
 }
 
-/* Estilo da imagem de perfil */
-.Image-Cirilo {
-  border-radius: 50%;
-  width: 40px;
-  height: 40px;
-  object-fit: cover;
-  margin-right: 60px; /* Adiciona um pequeno espaço à direita */
-}
-
-/* Estilo da seção do perfil */
-.Profile-Section {
-  display: flex;
-  align-items: center; /* Centraliza a imagem de perfil e o texto verticalmente */
-}
-
-.NomeDoPerfil {
-  right: 100px;
+.Perfil:hover {
+  text-decoration: underline;
 }
 
 .shopping-cart-icon {
-  aspect-ratio: 1/1;
-  width: 2em;
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .Main-Header {
+    flex-direction: column;
+    height: auto;
+    padding: 10px 20px;
+  }
+
+  .Input-Products {
+    margin: 10px 0;
+    width: 100%;
+  }
+
+  .logo-text {
+    font-size: 1.5rem;
+  }
+
+  .Image-Cirilo {
+    width: 40px;
+    height: 40px;
+  }
 }

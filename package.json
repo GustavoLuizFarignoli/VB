@@ -10,6 +10,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@fortawesome/free-solid-svg-icons": "^6.6.0",
+    "@fortawesome/react-fontawesome": "^0.2.2",
     "@react-login-page/page11": "^1.0.4",
     "cross-env": "^7.0.3",
     "dotenv": "^16.4.5",
