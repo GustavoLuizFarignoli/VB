@@ -31,7 +31,7 @@ const Cadastro = () => {
 
       if (RESPONSE.status) {
         console.table(RESPONSE);
-        localStorage.setItem('LoginToken', RESPONSE);
+        localStorage.setItem('LoginToken', RESPONSE.token);
         alert("Usuário Cadastrado com sucesso")
         window.location.replace("/Home");
       } else {
