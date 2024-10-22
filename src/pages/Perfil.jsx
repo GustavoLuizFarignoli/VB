@@ -138,9 +138,6 @@ const Profile = () => {
             <button className="delete-button" onClick={handleDelete}>
               Excluir a conta
             </button>
-            <button className="delete-button" onClick={isAuthenticated}>
-              Teste Token
-            </button>
           </div>
         </div>
 
