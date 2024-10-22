@@ -21,7 +21,7 @@ const Profile = () => {
     if (token === 'undefined' || token === null) {
       console.log("Token Não Existe");
       alert("Você precisa estar logado para acessar o perfil");
-      //window.location.href = '/Login';
+      window.location.href = '/Login';
       return false;
     } else {
       console.log("Logado");
